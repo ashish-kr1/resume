@@ -1,0 +1,578 @@
+<!-- choose between two template-->
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel" *ngIf="!showTemplates">
+    <div class="carousel-inner" role="listbox">
+  <img src="../../assets/img/two.jpg"  alt="loading..." width="550" height="600">
+<span><button type="button" class="btn btn-danger" (click)="resumeBuilder(1)">Use this template</button></span>
+
+  <img src="../../assets/img/new.jpg" alt="loading..." width="450" height="650">
+<span><button type="button" class="btn btn-danger" (click)="resumeBuilder(2)">Use this template</button></span>
+</div>
+</div>
+
+<!-- third page to show template 1-->
+<div *ngIf="showTemplates" #content>
+
+    <div class="bs-component">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto" style="color:blue;cursor:pointer">
+             
+              <li class="nav-item">
+                <a class="nav-link" (click)="container()">Preview</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="custm1()">Customise</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="downloadpdf()" *ngIf="button">Download</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="ar1()">Add/Remove</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="ar2()">Editor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="repo()">Reprositary</a>
+                  </li>
+            </ul>
+           
+          </div>
+        </nav>
+      </div>
+
+
+<div *ngIf="template==1" >
+  
+  
+    <div id="container1" *ngIf="template1">
+          
+      <h1 >Name: {{ name }}</h1>
+  
+          <h2>Designation: {{designation}}</h2>
+  
+          <ul>
+            <li><span>E-mail:</span> {{email}}</li>
+  
+            <li><span>Website:</span> {{website}}</li>
+  
+            <li><span>Phone:</span> {{phone}}</li>
+  
+            <li><span>Address:</span> {{address}}</li>
+          </ul>
+        
+  
+        <div class="section personal" *ngIf="personal">
+          <div class="left">
+            <h3>Detail</h3>
+          </div>
+  
+          <div class="right">
+            <p>{{pinf}}</p>
+  
+           </div>
+      
+        </div>
+    
+        <div class="section gallery" *ngIf="awards">
+          <div class="left">
+            <h3>Awards</h3>
+  
+            <p> {{caption}}</p>
+                
+        </div>
+        <div class="right">
+            <p>{{pinf}}</p>
+  
+           </div>
+    </div>
+        <div class="section education " *ngIf="uni" >
+          <div class="left">
+            <h3>Education</h3>
+          </div>
+  
+          <div class="right">
+            <div class="row selection_education">
+              <h4>{{university}}</h4>
+  
+              <h5>{{uni_sub}}</h5>
+  
+              <p>{{detailed_qualification}}</p>{{uni_duration}}
+            </div>
+  
+            <div class="row">
+             <h4>{{universit}}</h4>
+  
+              <h5>{{uni_su}}</h5>
+  
+              <p>{{detailed_qualificatio}}</p>{{uni_duratio}}
+            </div>
+          </div>
+        </div>
+  
+        <div class="section technical" *ngIf="technology" >
+          <div class="left">
+            <h3>Technikal Skills</h3>
+          </div>
+  
+          <div class="right">
+            
+            <div class="right_left">
+              <p><span>{{tech_heading}}</span></p>
+  
+              <p>{{tech_detail}}</p>
+            </div>
+          </div>
+        </div>
+       
+   </div>
+  <div class="vl" *ngIf="vl"></div>
+   
+ <div id="container2" *ngIf="show">
+  <form class="user-form"  (submit) = "addBuilder()">
+  <div class="field">
+ <h3>Basic Info</h3>
+  <label for="name">Name:</label> <input name="name" type="text" [(ngModel)]='name' >
+ 
+ <label for="1">Designation:</label> <input name="1"type="text" [(ngModel)]='designation' >
+ <label for="2">Email:</label> <input name="2" type="text" [(ngModel)]='email' >
+ <label for="3">Website:</label> <input name="3" type="text" [(ngModel)]='website' >
+ <label for="4">Phone:</label> <input name="4" type="text" [(ngModel)]='phone' >
+ <label for="5">Address:</label> <input name="5"type="text" [(ngModel)]='address' >
+<div *ngIf="personal">
+ <label for="8">personal info:</label> <input name="8"type="text" [(ngModel)]='pinf' >
+ </div>
+ <div *ngIf="awards">
+ <label for="9">Awards_Caption:</label> <input name="9"type="text" [(ngModel)]='caption' >
+ </div>
+ <div *ngIf="uni">
+ <label for="0">university:</label> <input name="0"type="text" [(ngModel)]='university' >
+ <label for="11">university_sub:</label> <input name="11"type="text" [(ngModel)]='uni_sub' >
+ <label for="12">detailed_qualification:</label> <input name="12"type="text" [(ngModel)]='detailed_qualification' >
+ <label for="13">uni_duration:</label> <input name="13"type="text" [(ngModel)]='uni_duration' >
+ <label for="08">university:</label> <input name="08"type="text" [(ngModel)]='universit' >
+ <label for="111">university_sub:</label> <input name="111"type="text" [(ngModel)]='uni_su' >
+ <label for="121">detailed_qualification:</label> <input name="121"type="text"[(ngModel)]='detailed_qualificatio' >
+ <label for="131">uni_duration:</label> <input name="131"type="text" [(ngModel)]='uni_duratio' >
+ </div>
+ <div *ngIf="technology">
+   <label for="14">tech_heading:</label> <input name="14"type="text" [(ngModel)]='tech_heading' >
+ <label for="74">tech_detail:</label> <input name="74"type="text" [(ngModel)]='tech_detail' >
+ </div>
+ </div>
+ <input type="submit" class="btn btn btn-success" value="SAVE">
+ </form>
+  </div> 
+
+  <!-- fecting from database for 1st template template -->
+
+
+  <div class="container" *ngIf="databasePreview">
+      <div *ngFor="let builder of builders">
+       <!-- if loop start with revrse and print last element then we get only present data or find with id
+      and local storage
+      -->
+    <div id="container" >
+          
+        <h1 >Name: {{ builder.name }}</h1>
+    
+            <h2>Designation: {{builder.designation}}</h2>
+    
+            <ul>
+              <li><span>E-mail:</span> {{builder.email}}</li>
+    
+              <li><span>Website:</span> {{builder.website}}</li>
+    
+              <li><span>Phone:</span> {{builder.phone}}</li>
+    
+              <li><span>Address:</span> {{builderaddress}}</li>
+            </ul>
+          
+    
+          <div class="section personal" *ngIf="personal">
+            <div class="left">
+              <h3>Detail</h3>
+            </div>
+    
+            <div class="right">
+              <p>{{builder.pinf}}</p>
+    
+             </div>
+        
+          </div>
+      
+          <div class="section gallery" *ngIf="awards">
+            <div class="left">
+              <h3>Awards</h3>
+    
+              <p> {{builder.caption}}</p>
+                  
+          </div>
+          <div class="right">
+              <p>{{builder.pinf}}</p>
+    
+             </div>
+      </div>
+          <div class="section education " *ngIf="uni" >
+            <div class="left">
+              <h3>Education</h3>
+            </div>
+    
+            <div class="right">
+              <div class="row selection_education">
+                <h4>{{builder.university}}</h4>
+    
+                <h5>{{builder.uni_sub}}</h5>
+    
+                <p>{{builder.detailed_qualification}}</p>{{builder.uni_duration}}
+              </div>
+    
+              <div class="row">
+               <h4>{{builder.universit}}</h4>
+    
+                <h5>{{builder.uni_su}}</h5>
+    
+                <p>{{builder.detailed_qualificatio}}</p>{{builder.uni_duratio}}
+              </div>
+            </div>
+          </div>
+    
+          <div class="section technical" *ngIf="technology" >
+            <div class="left">
+              <h3>Technikal Skills</h3>
+            </div>
+    
+            <div class="right">
+              
+              <div class="right_left">
+                <p><span>{{builder.tech_heading}}</span></p>
+    
+                <p>{{builder.tech_detail}}</p>
+              </div>
+            </div>
+          </div>
+         
+     </div>
+      </div>
+      </div>
+
+<!-- start of container 3 add and remove section -->
+
+  <div id="container3" *ngIf="hide" >
+    <form class="user-for">
+        
+    <div class="field">
+   
+   <label >Personal Info:</label> <button (click)="a1()">Add/Remove</button>
+   
+   <label >Awarsds:</label> <button (click)="a2()">Add/Remove</button>
+   <label >Education:</label> <button (click)="a3()">Add/Remove</button>
+   
+   <label >Skills</label> <button (click)="a4()">Add/Remove</button>
+   </div>
+   </form>
+   </div>
+
+
+
+</div>
+<!-- third page to show template 2-->
+<div *ngIf="template==2" >
+    <div  *ngIf="template2">
+          
+      <h1 >Name: {{ name }}</h1>
+  
+          <h2>Designation: {{designation}}</h2>
+  
+          <ul>
+            <li><span>E-mail:</span> {{email}}</li>
+  
+            <li><span>Website:</span> {{website}}</li>
+  
+            <li><span>Phone:</span> {{phone}}</li>
+  
+            <li><span>Address:</span> {{address}}</li>
+          </ul>
+        
+          <div  *ngIf="technology" >
+              <div class="left">
+                <h3>Technikal Skills</h3>
+              </div>
+      
+              <div class="right">
+                
+                <div class="right_left">
+                  <p><span>{{tech_heading}}</span></p>
+      
+                  <p>{{tech_detail}}</p>
+                </div>
+              </div>
+            </div>
+        <div  *ngIf="personal">
+          <div class="left">
+            <h3>Detail</h3>
+          </div>
+  
+          <div class="right">
+            <p>{{pinf}}</p>
+  
+           </div>
+      
+        </div>
+    
+       
+        <div  *ngIf="uni" >
+          <div class="left">
+            <h3>Education</h3>
+          </div>
+  
+          <div class="right">
+            <div class="row selection_education">
+              <h4>{{university}}</h4>
+  
+              <h5>{{uni_sub}}</h5>
+  
+              <p>{{detailed_qualification}}</p>{{uni_duration}}
+            </div>
+  
+            <div class="row">
+             <h4>{{universit}}</h4>
+  
+              <h5>{{uni_su}}</h5>
+  
+              <p>{{detailed_qualificatio}}</p>{{uni_duratio}}
+            </div>
+          </div>
+        </div>
+  
+        <div  *ngIf="awards">
+            <div class="left">
+              <h3>Awards</h3>
+    
+              <p> {{caption}}</p>
+                  
+          </div>
+          <div class="right">
+              <p>{{pinf}}</p>
+    
+             </div>
+      </div>
+       
+   </div>
+  <div class="vl" *ngIf="vl"></div>
+   
+ <div id="container2" *ngIf="show">
+  <form class="user-form"  (submit) = "addBuilder()">
+    
+  <div class="field">
+ <h3>Basic Info</h3>
+  <label for="name">Name:</label> <input name="name" type="text" [(ngModel)]='name' >
+ 
+ <label for="1">Designation:</label> <input name="1"type="text" [(ngModel)]='designation' >
+ <label for="2">Email:</label> <input name="2" type="text" [(ngModel)]='email' >
+ <label for="3">Website:</label> <input name="3" type="text" [(ngModel)]='website' >
+ <label for="4">Phone:</label> <input name="4" type="text" [(ngModel)]='phone' >
+ <label for="5">Address:</label> <input name="5"type="text" [(ngModel)]='address' >
+<div *ngIf="personal">
+ <label for="8">personal info:</label> <input name="8"type="text" [(ngModel)]='pinf' >
+ </div>
+ <div *ngIf="awards">
+ <label for="9">Awards_Caption:</label> <input name="9"type="text" [(ngModel)]='caption' >
+ </div>
+ <div *ngIf="uni">
+ <label for="0">university:</label> <input name="0"type="text" [(ngModel)]='university' >
+ <label for="11">university_sub:</label> <input name="11"type="text" [(ngModel)]='uni_sub' >
+ <label for="12">detailed_qualification:</label> <input name="12"type="text" [(ngModel)]='detailed_qualification' >
+ <label for="13">uni_duration:</label> <input name="13"type="text" [(ngModel)]='uni_duration' >
+ <label for="08">university:</label> <input name="08"type="text" [(ngModel)]='universit' >
+ <label for="111">university_sub:</label> <input name="111"type="text" [(ngModel)]='uni_su' >
+ <label for="121">detailed_qualification:</label> <input name="121"type="text"[(ngModel)]='detailed_qualificatio' >
+ <label for="131">uni_duration:</label> <input name="131"type="text" [(ngModel)]='uni_duratio' >
+ </div>
+ <div *ngIf="technology">
+   <label for="14">tech_heading:</label> <input name="14"type="text" [(ngModel)]='tech_heading' >
+ <label for="74">tech_detail:</label> <input name="74"type="text" [(ngModel)]='tech_detail' >
+ </div>
+ </div>
+ <input type="submit" class="btn btn btn-success" value="SAVE">
+
+
+
+ </form>
+
+
+
+ 
+  </div> 
+
+
+  <div id="container3" *ngIf="hide" >
+    <form class="user-for">
+       
+    <div class="field">
+   
+   <label >Personal Info:</label> <button (click)="a1()">Add/Remove</button>
+   
+   <label >Awarsds:</label> <button (click)="a2()">Add/Remove</button>
+   <label >Education:</label> <button (click)="a3()">Add/Remove</button>
+   
+   <label >Skills</label> <button (click)="a4()">Add/Remove</button>
+   </div>
+   </form>
+   </div>
+<!-- fecting from database for second template -->
+   <div class="container" *ngIf="databasePreview2">
+      <div *ngFor="let builder of builders">
+        
+        <div class="col-md-3">
+         Name {{builder.name}}
+        </div>
+        <div class="col-md-3">
+         Designation {{builder.designation}}
+        </div>
+        <div class="col-md-3">
+         Phone {{builder.phone}}
+        </div>
+        <div class="col-md-3">
+             {{builder.address}}
+           </div>
+           <div class="col-md-3">
+              {{builder.email}}
+            </div>
+            <div class="col-md-3">
+                {{builder.website}}
+              </div>
+              <div class="col-md-3">
+                  {{builder.pinf}}
+                </div>
+                <div class="col-md-3">
+                    {{builder.caption}}
+                  </div>
+                  <div class="col-md-3">
+                      {{builder.university}}
+                    </div>
+                    <div class="col-md-3">
+                        {{builder.uni_sub}}
+                      </div>
+                      <div class="col-md-3">
+                          {{builder.detailed_qualification}}
+                        </div>
+                        <div class="col-md-3">
+                            {{builder.uni_duration}}
+                          </div>
+                          <div class="col-md-3">
+                              {{builder.universit}}
+                            </div>
+                            <div class="col-md-3">
+                                {{builder.uni_su}}
+                              </div>
+                              <div class="col-md-3">
+                                  {{builder.detailed_qualificatio}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{builder.uni_duratio}}
+                                  </div>
+                                  <div class="col-md-3">
+                                      {{builder.tech_heading}}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{builder.tech_detail}}
+                                      </div>
+      </div>
+      </div>
+
+</div >
+
+</div>
+<!--
+
+  costmise first template
+
+
+-->
+<div  *ngIf="customise1">
+          
+    <h1 >Name: {{ name }}</h1>
+
+        <h2>Designation: {{designation}}</h2>
+
+        <ul>
+          <li><span>E-mail:</span> {{email}}</li>
+
+          <li><span>Website:</span> {{website}}</li>
+
+          <li><span>Phone:</span> {{phone}}</li>
+
+          <li><span>Address:</span> {{address}}</li>
+        </ul>
+      
+        <div  *ngIf="technology" >
+            <div class="left">
+              <h3>Technikal Skills</h3>
+            </div>
+    
+            <div class="right">
+              
+              <div class="right_left">
+                <p><span>{{tech_heading}}</span></p>
+    
+                <p>{{tech_detail}}</p>
+              </div>
+            </div>
+          </div>
+      <div  *ngIf="personal">
+        <div class="left">
+          <h3>Detail</h3>
+        </div>
+
+        <div class="right">
+          <p>{{pinf}}</p>
+
+         </div>
+    
+      </div>
+  
+     
+      <div  *ngIf="uni" >
+        <div class="left">
+          <h3>Education</h3>
+        </div>
+
+        <div class="right">
+          <div class="row selection_education">
+            <h4>{{university}}</h4>
+
+            <h5>{{uni_sub}}</h5>
+
+            <p>{{detailed_qualification}}</p>{{uni_duration}}
+          </div>
+
+          <div class="row">
+           <h4>{{universit}}</h4>
+
+            <h5>{{uni_su}}</h5>
+
+            <p>{{detailed_qualificatio}}</p>{{uni_duratio}}
+          </div>
+        </div>
+      </div>
+
+      <div  *ngIf="awards">
+          <div class="left">
+            <h3>Awards</h3>
+  
+            <p> {{caption}}</p>
+                
+        </div>
+        <div class="right">
+            <p>{{pinf}}</p>
+  
+           </div>
+    </div>
+     
+ </div>
